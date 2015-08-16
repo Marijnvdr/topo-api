@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CapitalsData>
+    <Capital>
+      <Id>1</Id>
+      <Name>Amsterdam</Name>
+      <Country>Nederland</Country>
+      <Continent>Europa</Continent>    
+    </Capital>
+    <Capital>
+      <Id>2</Id>
+      <Name>Brussel</Name>
+      <Country>België</Country>
+      <Continent>Europa</Continent>    
+    </Capital>
+    <Capital>
+      <Id>3</Id>
+      <Name>Parijs</Name>
+      <Country>Frankrijk</Country>
+      <Continent>Europa</Continent>    
+    </Capital>
+    <Capital>
+      <Id>4</Id>
+      <Name>Madrid</Name>
+      <Country>Spanje</Country>
+      <Continent>Europa</Continent>    
+    </Capital>
+    <Capital>
+      <Id>5</Id>
+      <Name>Lissabon</Name>
+      <Country>Portugal</Country>
+      <Continent>Europa</Continent>    
+    </Capital>
+</CapitalsData>
