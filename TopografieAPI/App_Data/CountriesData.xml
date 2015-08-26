@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CountriesData>
+    <Country>
+      <Id>1</Id>
+      <Name>Netherlands</Name>
+      <Name_nl>Nederland</Name_nl>
+      <Region>150</Region>    
+    </Country>
+    <Country>
+      <Id>2</Id>
+      <Name>Belgium</Name>
+      <Name_nl>België</Name_nl>
+      <Region>150</Region>    
+    </Country>
+    <Country>
+      <Id>3</Id>
+      <Name>France</Name>
+      <Name_nl>Frankrijk</Name_nl>
+      <Region>150</Region>    
+    </Country>
+    <Country>
+      <Id>4</Id>
+      <Name>Spain</Name>
+      <Name_nl>Spanje</Name_nl>
+      <Region>150</Region>    
+    </Country>
+    <Country>
+      <Id>5</Id>
+      <Name>Portugal</Name>
+      <Name_nl>Portugal</Name_nl>
+      <Region>150</Region>    
+    </Country>
+  <Country>
+    <Id>6</Id>
+    <Name>Egypt</Name>
+    <Name_nl>Egypte</Name_nl>
+    <Region>002</Region>
+  </Country>
+  <Country>
+    <Id>7</Id>
+    <Name>Australia</Name>
+    <Name_nl>Australië</Name_nl>
+    <Region>009</Region>
+  </Country>
+
+</CountriesData>
