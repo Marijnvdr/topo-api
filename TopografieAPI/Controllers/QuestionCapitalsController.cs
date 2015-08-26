@@ -12,37 +12,32 @@ using TopografieAPI.Models;
 namespace TopografieAPI.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    public class CapitalsController : ApiController
+    public class QuestionCapitalsController : ApiController
     {
-        private const int MaxCapitalId = 5;
+        private const int MaxCapitalId = 7;
+        private const int NumberOfChoices = 4;
 
-        // GET api/topo/5
-        public Capital Get(int id)
-        {
-            var list = new List<int>() { id };
-            var capitals = GetCapitals(list);
-            return capitals[0];
-        }
-
-        public QuestionCapitalViewModel GetQuestion()
+        public QuestionCapitalViewModel Get()
         {
             Random random = new Random();
 
             List<int> answers = new List<int>();
 
             // Get answer to question
-            var answerId = random.Next(1, MaxCapitalId);
+            var answerId = random.Next(1, MaxCapitalId+1);
             answers.Add(answerId);
 
             // Get multiple choice answers
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < NumberOfChoices - 1; i++)
             {
                 var id = GetRandomUniqueId(random, answers);
                 answers.Add(id);
             }
             var capitals = GetCapitals(answers);
 
-            return  new QuestionCapitalViewModel() { Answer = capitals[0], Choices = capitals };
+            var shuffeledCapitals = GetShuffeledCapitals(random, capitals);
+
+            return new QuestionCapitalViewModel() { Answer = capitals[0], Choices = shuffeledCapitals };
         }
 
         /// <summary>
@@ -81,13 +76,39 @@ namespace TopografieAPI.Controllers
         {
             bool unique = false;
             int answerId = 0;
- 
-            while (!unique)            
+
+            while (!unique)
             {
-                answerId = random.Next(1, MaxCapitalId);
+                answerId = random.Next(1, MaxCapitalId + 1);
                 unique = !excludeAnswers.Contains(answerId);
             }
             return answerId;
+        }
+
+        private Capital[] GetShuffeledCapitals(Random random, Capital[] capitals)
+        {
+            List<int> shuffeled = new List<int>();
+            for (int i = 0; i < NumberOfChoices; i++)
+            {
+                shuffeled.Add(i);
+            }
+            // Now shuffel
+            for (int i = NumberOfChoices; i > 1; i--)
+            {
+                int k = random.Next(0, i);
+                int value = shuffeled[k];
+                shuffeled[k] = shuffeled[i - 1];
+                shuffeled[i - 1] = value;
+            }
+
+            var shuffeledCapitals = new Capital[NumberOfChoices];
+            var t = 0;
+            foreach (var c in shuffeled)
+            {
+                shuffeledCapitals[t] = capitals[c];
+                t++;
+            }
+            return shuffeledCapitals;
         }
     }
 }

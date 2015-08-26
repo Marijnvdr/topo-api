@@ -5,7 +5,7 @@ using System.Web;
 
 namespace TopografieAPI.Models
 {
-    public class CountryViewModel
+    public class Country
     {
         public string Name { get; set; }
 

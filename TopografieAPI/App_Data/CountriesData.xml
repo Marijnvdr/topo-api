@@ -30,4 +30,17 @@
       <Name_nl>Portugal</Name_nl>
       <Region>150</Region>    
     </Country>
+  <Country>
+    <Id>6</Id>
+    <Name>Egypt</Name>
+    <Name_nl>Egypte</Name_nl>
+    <Region>2</Region>
+  </Country>
+  <Country>
+    <Id>7</Id>
+    <Name>Australia</Name>
+    <Name_nl>Australië</Name_nl>
+    <Region>9</Region>
+  </Country>
+
 </CountriesData>

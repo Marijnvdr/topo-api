@@ -5,16 +5,12 @@ using System.Web;
 
 namespace TopografieAPI.Models
 {
-    public class CapitalViewModel
+    public class Capital
     {
-        //public string Id { get; set; }
-
         public string Name { get; set; }
 
         public string Country { get; set; }
 
         public string Continent { get; set; }
-
-        //public int Population { get; set; }
     }
 }

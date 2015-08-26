@@ -30,4 +30,16 @@
       <Country>Portugal</Country>
       <Continent>Europa</Continent>    
     </Capital>
+  <Capital>
+    <Id>6</Id>
+    <Name>Caïro</Name>
+    <Country>Egypte</Country>
+    <Continent>Afrika</Continent>
+  </Capital>
+  <Capital>
+    <Id>7</Id>
+    <Name>Canberra</Name>
+    <Country>Australië</Country>
+    <Continent>Oceanië</Continent>
+  </Capital>
 </CapitalsData>
