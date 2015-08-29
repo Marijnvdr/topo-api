@@ -14,7 +14,7 @@ namespace TopografieAPI.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CapitalsController : ApiController
     {
-        private const int MaxCapitalId = 5;
+        private const int MaxCapitalId = 7;
 
         // GET api/topo/5
         public Capital Get(int id)
