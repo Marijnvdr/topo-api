@@ -63,4 +63,3 @@ C:\Marijn\Develop\TopografieAPI\topo-api\TopografieAPI\obj\Debug\TopografieAPI.p
 C:\Marijn\Develop\TopografieAPI\topo-api\TopografieAPI\bin\System.Web.Cors.dll
 C:\Marijn\Develop\TopografieAPI\topo-api\TopografieAPI\bin\System.Web.Http.Cors.dll
 C:\Marijn\Develop\TopografieAPI\topo-api\TopografieAPI\bin\System.Web.Http.Cors.xml
-C:\Marijn\Develop\TopografieAPI\topo-api\TopografieAPI\obj\Debug\TopografieAPI.csprojResolveAssemblyReference.cache
