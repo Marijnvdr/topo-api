@@ -14,7 +14,7 @@ namespace TopografieAPI.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class QuestionCountriesController : ApiController
     {
-        private const int MaxCountryId = 7;
+        private const int MaxCountryId = 40;
         private const int NumberOfChoices = 4;
 
         public QuestionCountryViewModel Get()
@@ -66,10 +66,17 @@ namespace TopografieAPI.Controllers
               where (string)el.Element("Id") == id.ToString()
               select el;
             var country = countries.FirstOrDefault();
-            if (country != null)
-                return new Country { Name = (string)country.Element("Name"), Name_nl = (string)country.Element("Name_nl"), Region = (string)country.Element("Region") };
-            else
-                return new Country { Name = "NOT_FOUND", Name_nl = "NOT_FOUND", Region = "" };
+            if (country == null)
+                return new Country { Name = "NOT_FOUND", Name_nl = "NOT_FOUND", Region = "", SubRegion = "", Code = "" };
+
+            return new Country
+            {
+                Name = (string)country.Element("Name"),
+                Name_nl = (string)country.Element("Name_nl"),
+                Region = (string)country.Element("Region"),
+                SubRegion = (string)country.Element("SubRegion"),
+                Code = (string)country.Element("Code")
+            };
         }
 
         private int GetRandomUniqueId(Random random, List<int> excludeAnswers)

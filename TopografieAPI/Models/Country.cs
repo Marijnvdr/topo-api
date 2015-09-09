@@ -12,5 +12,9 @@ namespace TopografieAPI.Models
         public string Name_nl { get; set; }
 
         public string Region { get; set; }
+
+        public string SubRegion { get; set; }
+
+        public string Code { get; set; }
     }
 }
