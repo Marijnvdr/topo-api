@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TopografieAPI.Repositories;
 
 namespace TopografieAPI.Controllers
 {
@@ -11,6 +12,19 @@ namespace TopografieAPI.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
+
+             var db = new NatureElementsRepository();
+             var item = db.NatureElements.Where(x => x.NatureId == 2).FirstOrDefault();
+             
+            if (item == null) 
+            {
+                ViewBag.Test = "NOT FOUND";
+            }
+            else
+            {
+                ViewBag.Test = "YES, FOUND: " + item.Name;
+            }
+            
 
             return View();
         }
