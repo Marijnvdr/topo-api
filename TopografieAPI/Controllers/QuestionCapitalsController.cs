@@ -8,6 +8,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Xml.Linq;
 using TopografieAPI.Models;
+using TopografieAPI.Repositories;
 
 namespace TopografieAPI.Controllers
 {
@@ -49,27 +50,28 @@ namespace TopografieAPI.Controllers
         private Capital[] GetCapitals(List<int> ids)
         {
             var capitals = new Capital[ids.Count];
-            XElement root = XElement.Load(HostingEnvironment.MapPath("~/App_Data/CapitalsData.xml"));
+            var db = new CapitalsRepository();
             int i = 0;
             foreach (var id in ids)
             {
-                capitals[i] = GetCapital(root, id);
+                capitals[i] = GetCapital(db, id);
                 i++;
             }
             return capitals;
         }
 
-        private Capital GetCapital(XElement root, int id)
+        private Capital GetCapital(CapitalsRepository db, int id)
         {
-            IEnumerable<XElement> capitals =
-              from el in root.Elements("Capital")
-              where (string)el.Element("Id") == id.ToString()
-              select el;
-            var capital = capitals.FirstOrDefault();
-            if (capital != null)
-                return new Capital { Name = (string)capital.Element("Name"), Country = (string)capital.Element("Country"), Continent = (string)capital.Element("Continent") };
-            else
+            var capital = db.Capitals.Where(x => x.CapitalId == id).FirstOrDefault();
+            if (capital == null)
                 return new Capital { Name = "NOT_FOUND", Continent = "", Country = "" };
+
+            return new Capital 
+            { 
+                Name = capital.Name,
+                Country = capital.Country,
+                Continent = capital.Continent
+            };
         }
 
         private int GetRandomUniqueId(Random random, List<int> excludeAnswers)

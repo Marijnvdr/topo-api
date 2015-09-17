@@ -8,6 +8,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Xml.Linq;
 using TopografieAPI.Models;
+using TopografieAPI.Repositories;
 
 namespace TopografieAPI.Controllers
 {
@@ -21,10 +22,10 @@ namespace TopografieAPI.Controllers
         {
             var countries = new List<Country>();
 
-            XElement root = XElement.Load(HostingEnvironment.MapPath("~/App_Data/CountriesData.xml"));
+            var db = new CountriesRepository();
             for (int i = 1; i <= MaxCountryId; i++)
             {
-                countries.Add(GetCountry(root, i));
+                countries.Add(GetCountry(db, i));
             }
             return countries;
 
@@ -34,27 +35,24 @@ namespace TopografieAPI.Controllers
         // GET: api/Countries/5
         public Country Get(int id)
         {
-            XElement root = XElement.Load(HostingEnvironment.MapPath("~/App_Data/CountriesData.xml"));
-            return GetCountry(root, id);
+            var db = new CountriesRepository();
+            return GetCountry(db, id);
         }
 
-        private Country GetCountry(XElement root, int id)
+        private Country GetCountry(CountriesRepository db, int id)
         {
-            IEnumerable<XElement> countries =
-              from el in root.Elements("Country")
-              where (string)el.Element("Id") == id.ToString()
-              select el;
-            var country = countries.FirstOrDefault();
+            var country = db.Countries.Where(x => x.CountryId == id).FirstOrDefault();
+
             if (country == null)
                 return new Country { Name = "NOT_FOUND", Name_nl = "NOT_FOUND", Region = "", SubRegion = "", Code = "" };
 
             return new Country
             {
-                Name = (string)country.Element("Name"),
-                Name_nl = (string)country.Element("Name_nl"),
-                Region = (string)country.Element("Region"),
-                SubRegion = (string)country.Element("SubRegion"),
-                Code = (string)country.Element("Code")
+                Name = country.Name,
+                Name_nl = country.Name_nl,
+                Region = country.Region,
+                SubRegion = country.SubRegion,
+                Code = country.Code
             };
         }
 
