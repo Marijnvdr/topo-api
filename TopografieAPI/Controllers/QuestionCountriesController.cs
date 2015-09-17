@@ -8,6 +8,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Xml.Linq;
 using TopografieAPI.Models;
+using TopografieAPI.Repositories;
 
 namespace TopografieAPI.Controllers
 {
@@ -49,33 +50,30 @@ namespace TopografieAPI.Controllers
         private Country[] GetCountries(List<int> ids)
         {
             var countries = new Country[ids.Count];
-            XElement root = XElement.Load(HostingEnvironment.MapPath("~/App_Data/CountriesData.xml"));
+            var db = new CountriesRepository();
             int i = 0;
             foreach (var id in ids)
             {
-                countries[i] = GetCountry(root, id);
+                countries[i] = GetCountry(db, id);
                 i++;
             }
             return countries;
         }
 
-        private Country GetCountry(XElement root, int id)
-        {
-            IEnumerable<XElement> countries =
-              from el in root.Elements("Country")
-              where (string)el.Element("Id") == id.ToString()
-              select el;
-            var country = countries.FirstOrDefault();
+        private Country GetCountry(CountriesRepository db, int id)
+        {            
+            var country = db.Countries.Where(x => x.CountryId == id).FirstOrDefault();
+
             if (country == null)
                 return new Country { Name = "NOT_FOUND", Name_nl = "NOT_FOUND", Region = "", SubRegion = "", Code = "" };
 
             return new Country
             {
-                Name = (string)country.Element("Name"),
-                Name_nl = (string)country.Element("Name_nl"),
-                Region = (string)country.Element("Region"),
-                SubRegion = (string)country.Element("SubRegion"),
-                Code = (string)country.Element("Code")
+                Name = country.Name,
+                Name_nl = country.Name_nl,
+                Region = country.Region,
+                SubRegion = country.SubRegion,
+                Code = country.Code
             };
         }
 

@@ -7,17 +7,23 @@ using System.Web;
 
 namespace TopografieAPI.Entities
 {
-    [Table("NatureElements")]
-    public class Nature
+    [Table("Capitals")]
+    public class CapitalEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int NatureId { get; set; }
+        public int CapitalId { get; set; }
 
         [Required]
+        [StringLength(50)]
         public string Name { get; set; }
 
         [Required]
-        public int Category { get; set; }
+        [StringLength(50)]
+        public string Country { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string Continent { get; set; }
     }
 }

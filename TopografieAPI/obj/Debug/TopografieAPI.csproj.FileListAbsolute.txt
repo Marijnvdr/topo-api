@@ -61,6 +61,5 @@ C:\Marijn\Develop\TopografieAPI\topo-api\TopografieAPI\bin\Microsoft.Owin.Securi
 C:\Marijn\Develop\TopografieAPI\topo-api\TopografieAPI\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Marijn\Develop\TopografieAPI\topo-api\TopografieAPI\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Marijn\Develop\TopografieAPI\topo-api\TopografieAPI\bin\System.Web.Http.Owin.xml
-C:\Marijn\Develop\TopografieAPI\topo-api\TopografieAPI\obj\Debug\TopografieAPI.csprojResolveAssemblyReference.cache
 C:\Marijn\Develop\TopografieAPI\topo-api\TopografieAPI\obj\Debug\TopografieAPI.dll
 C:\Marijn\Develop\TopografieAPI\topo-api\TopografieAPI\obj\Debug\TopografieAPI.pdb

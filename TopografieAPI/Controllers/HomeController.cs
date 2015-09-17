@@ -14,7 +14,7 @@ namespace TopografieAPI.Controllers
             ViewBag.Title = "Home Page";
 
              var db = new NatureElementsRepository();
-             var item = db.NatureElements.Where(x => x.NatureId == 2).FirstOrDefault();
+             var item = db.NatureElements.Where(x => x.NatureId == 1).FirstOrDefault();
              
             if (item == null) 
             {

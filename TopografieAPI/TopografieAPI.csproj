@@ -210,7 +210,9 @@
     <Compile Include="Controllers\CapitalsController.cs" />
     <Compile Include="Controllers\QuestionCapitalsController.cs" />
     <Compile Include="Controllers\QuestionCountriesController.cs" />
-    <Compile Include="Entities\Nature.cs" />
+    <Compile Include="Entities\CapitalEntity.cs" />
+    <Compile Include="Entities\CountryEntity.cs" />
+    <Compile Include="Entities\NatureEntity.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -223,13 +225,13 @@
     <Compile Include="Models\QuestionCountryViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
+    <Compile Include="Repositories\CapitalsRepository.cs" />
+    <Compile Include="Repositories\CountriesRepository.cs" />
     <Compile Include="Repositories\NatureElementsRepository.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\CapitalsData.xml" />
-    <Content Include="App_Data\CountriesData.xml" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -286,7 +288,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
