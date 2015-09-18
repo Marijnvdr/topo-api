@@ -63,3 +63,4 @@ C:\Marijn\Develop\TopografieAPI\topo-api\TopografieAPI\bin\Microsoft.Owin.Securi
 C:\Marijn\Develop\TopografieAPI\topo-api\TopografieAPI\bin\System.Web.Http.Owin.xml
 C:\Marijn\Develop\TopografieAPI\topo-api\TopografieAPI\obj\Debug\TopografieAPI.dll
 C:\Marijn\Develop\TopografieAPI\topo-api\TopografieAPI\obj\Debug\TopografieAPI.pdb
+C:\Marijn\Develop\TopografieAPI\topo-api\TopografieAPI\obj\Debug\TopografieAPI.csprojResolveAssemblyReference.cache
