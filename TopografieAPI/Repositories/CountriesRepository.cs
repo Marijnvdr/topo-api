@@ -72,8 +72,22 @@ namespace TopografieAPI.Repositories
             context.Countries.Add(new CountryEntity { CountryId = 36, Name = "Bulgaria", Name_nl = "Bulgarije", Region = "150", SubRegion = "151", Code = "BG" });
             context.Countries.Add(new CountryEntity { CountryId = 37, Name = "Greece", Name_nl = "Griekenland", Region = "150", SubRegion = "039", Code = "GR" });
             context.Countries.Add(new CountryEntity { CountryId = 38, Name = "Malta", Name_nl = "Malta", Region = "150", SubRegion = "039", Code = "MT" });
-            context.Countries.Add(new CountryEntity { CountryId = 39, Name = "Egypt", Name_nl = "Egypte", Region = "002", SubRegion = "015", Code = "EG" });
-            context.Countries.Add(new CountryEntity { CountryId = 40, Name = "Australia", Name_nl = "Australië", Region = "009", SubRegion = "053", Code = "AU" });
+            context.Countries.Add(new CountryEntity { CountryId = 39, Name = "Colombia", Name_nl = "Colombia", Region = "019", SubRegion = "005", Code = "CO" });
+            context.Countries.Add(new CountryEntity { CountryId = 40, Name = "Venezuela", Name_nl = "Venezuela", Region = "019", SubRegion = "005", Code = "VE" });
+            context.Countries.Add(new CountryEntity { CountryId = 41, Name = "Guyana", Name_nl = "Guyana", Region = "019", SubRegion = "005", Code = "GY" });
+            context.Countries.Add(new CountryEntity { CountryId = 42, Name = "Suriname", Name_nl = "Suriname", Region = "019", SubRegion = "005", Code = "SR" });
+            context.Countries.Add(new CountryEntity { CountryId = 43, Name = "French Guiana", Name_nl = "Frans-Guyana", Region = "019", SubRegion = "005", Code = "GF" });
+            context.Countries.Add(new CountryEntity { CountryId = 44, Name = "Ecuador", Name_nl = "Ecuador", Region = "019", SubRegion = "005", Code = "EC" });
+            context.Countries.Add(new CountryEntity { CountryId = 45, Name = "Peru", Name_nl = "Peru", Region = "019", SubRegion = "005", Code = "PE" });
+            context.Countries.Add(new CountryEntity { CountryId = 46, Name = "Brazil", Name_nl = "Brazilië", Region = "019", SubRegion = "005", Code = "BR" });
+            context.Countries.Add(new CountryEntity { CountryId = 47, Name = "Bolivia", Name_nl = "Bolivia", Region = "019", SubRegion = "005", Code = "BO" });
+            context.Countries.Add(new CountryEntity { CountryId = 48, Name = "Chile", Name_nl = "Chili", Region = "019", SubRegion = "005", Code = "CL" });
+            context.Countries.Add(new CountryEntity { CountryId = 49, Name = "Argentina", Name_nl = "Argentinië", Region = "019", SubRegion = "005", Code = "AR" });
+            context.Countries.Add(new CountryEntity { CountryId = 50, Name = "Paraguay", Name_nl = "Paraguay", Region = "019", SubRegion = "005", Code = "PY" });
+            context.Countries.Add(new CountryEntity { CountryId = 51, Name = "Uruguay", Name_nl = "Uruguay", Region = "019", SubRegion = "005", Code = "UY" });
+            context.Countries.Add(new CountryEntity { CountryId = 52, Name = "Falkland Islands", Name_nl = "Falkland eilanden", Region = "019", SubRegion = "005", Code = "FK" });            
+            context.Countries.Add(new CountryEntity { CountryId = 53, Name = "Egypt", Name_nl = "Egypte", Region = "002", SubRegion = "015", Code = "EG" });
+            context.Countries.Add(new CountryEntity { CountryId = 54, Name = "Australia", Name_nl = "Australië", Region = "009", SubRegion = "053", Code = "AU" });
 
             base.Seed(context);
         }
