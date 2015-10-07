@@ -33,5 +33,9 @@ namespace TopografieAPI.Entities
         [Required]
         [StringLength(5)]
         public string Code { get; set; }
+
+        public bool ShowSubRegion { get; set; }
+
+        public int DifficultyLevel { get; set; }
     }
 }

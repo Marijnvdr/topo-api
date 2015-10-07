@@ -16,5 +16,9 @@ namespace TopografieAPI.Models
         public string SubRegion { get; set; }
 
         public string Code { get; set; }
+
+        public bool ShowSubRegion { get; set; }
+
+        public int DifficultyLevel { get; set; }
     }
 }
