@@ -65,7 +65,7 @@ namespace TopografieAPI.Controllers
             var country = db.Countries.Where(x => x.CountryId == id).FirstOrDefault();
 
             if (country == null)
-                return new Country { Name = "NOT_FOUND", Name_nl = "NOT_FOUND", Region = "", SubRegion = "", Code = "" };
+                return new Country { Name = "NOT_FOUND", Name_nl = "NOT_FOUND", Region = "", SubRegion = "", Code = "", ShowSubRegion = false, DifficultyLevel = 0 };
 
             return new Country
             {
@@ -73,7 +73,9 @@ namespace TopografieAPI.Controllers
                 Name_nl = country.Name_nl,
                 Region = country.Region,
                 SubRegion = country.SubRegion,
-                Code = country.Code
+                Code = country.Code,
+                ShowSubRegion = country.ShowSubRegion,
+                DifficultyLevel = country.DifficultyLevel
             };
         }
 
