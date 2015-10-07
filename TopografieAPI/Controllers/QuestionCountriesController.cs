@@ -15,8 +15,8 @@ namespace TopografieAPI.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class QuestionCountriesController : ApiController
     {
-        private const int MaxCountryId = 40;
-        private const int NumberOfChoices = 4;
+        private const int MaxCountryId = 77;
+        private const int NumberOfChoices = 8;
 
         public QuestionCountryViewModel Get()
         {
