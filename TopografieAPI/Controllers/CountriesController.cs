@@ -15,7 +15,7 @@ namespace TopografieAPI.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CountriesController : ApiController
     {
-        private const int MaxCountryId = 127;
+        private const int MaxCountryId = 173;
 
         // GET: api/Countries
         public IEnumerable<Country> Get()
