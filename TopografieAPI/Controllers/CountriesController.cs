@@ -48,6 +48,7 @@ namespace TopografieAPI.Controllers
 
             return new Country
             {
+                Id = country.CountryId.ToString(),
                 Name = country.Name,
                 Name_nl = country.Name_nl,
                 Region = country.Region,
