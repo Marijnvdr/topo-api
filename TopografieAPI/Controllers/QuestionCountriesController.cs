@@ -18,8 +18,12 @@ namespace TopografieAPI.Controllers
         private const int MaxCountryId = 173;
         private const int NumberOfChoices = 8;
 
-        public QuestionCountryViewModel Get()
+        public QuestionCountryViewModel Get(int difficultyLevel /*, string excludeList*/)
         {
+            // string[] excludeCountries = excludeList.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+
+            // ToDo: Take difficultyLevel and excludeList into account.
+
             Random random = new Random();
 
             List<int> answers = new List<int>();
@@ -69,6 +73,7 @@ namespace TopografieAPI.Controllers
 
             return new Country
             {
+                Id = country.CountryId.ToString(),
                 Name = country.Name,
                 Name_nl = country.Name_nl,
                 Region = country.Region,
