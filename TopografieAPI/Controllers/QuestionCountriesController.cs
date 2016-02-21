@@ -22,27 +22,65 @@ namespace TopografieAPI.Controllers
         {
             // string[] excludeCountries = excludeList.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
 
-            // ToDo: Take difficultyLevel and excludeList into account.
+            // ToDo: Take excludeList into account.
+
+            var db = new CountriesRepository();
+
+            var countries = db.Countries.Where(x => x.DifficultyLevel == difficultyLevel).ToArray();
 
             Random random = new Random();
 
             List<int> answers = new List<int>();
 
             // Get answer to question
-            var answerId = random.Next(1, MaxCountryId + 1);
+            var randomIndex = random.Next(0, countries.Length);
+            var answerId = countries[randomIndex].CountryId;
             answers.Add(answerId);
 
-            // Get multiple choice answers
-            for (int i = 0; i < NumberOfChoices - 1; i++)
+            var region = countries[randomIndex].Region;
+            var subRegion = countries[randomIndex].SubRegion;
+
+            // Try to get 4 answers from the same region
+            var countriesSameSubRegion = db.Countries.Where(x => x.Region == region &&
+                                                                 x.SubRegion == subRegion).ToArray();
+            if (countriesSameSubRegion.Length <= 4)
             {
-                var id = GetRandomUniqueId(random, answers);
-                answers.Add(id);
+                foreach (var c in countriesSameSubRegion)
+                {
+                    if (c.CountryId != answerId)
+                    answers.Add(c.CountryId);
+                }
             }
-            var countries = GetCountries(answers);
+            else
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    var id = GetRandomUniqueId(random, countriesSameSubRegion, answers);
+                    if (id > -1)
+                    {
+                        answers.Add(id);
+                    }                    
+                }
+            }
+            // Get other multiple choice answers
+            var allCountries = db.Countries.ToArray();
+            var answerCount = NumberOfChoices - answers.Count;
+            int y= 0;
+            while (y < answerCount)
+            {
+                var id = GetRandomUniqueId(random, allCountries, answers);
+                if (id > -1)
+                {
+                    answers.Add(id);
+                    y++;
+                }                
+            }
 
-            var shuffeledCountries = GetShuffeledCountries(random, countries);
+            var questionCountries = GetCountries(answers);
 
-            return new QuestionCountryViewModel() { Answer = countries[0], Choices = shuffeledCountries };
+            var shuffeledCountries = GetShuffeledCountries(random, questionCountries);
+
+            return new QuestionCountryViewModel() { Answer = questionCountries[0], Choices = shuffeledCountries };
         }
 
         /// <summary>
@@ -84,17 +122,20 @@ namespace TopografieAPI.Controllers
             };
         }
 
-        private int GetRandomUniqueId(Random random, List<int> excludeAnswers)
+        private int GetRandomUniqueId(Random random, Entities.CountryEntity[] countries, List<int> excludeAnswers)
         {
             bool unique = false;
-            int answerId = 0;
-
-            while (!unique)
+            int answerId = -1;
+            int tryMax = 100;
+            int i = 1;
+            while (!unique && i < tryMax)
             {
-                answerId = random.Next(1, MaxCountryId + 1);
+                var answerIndex = random.Next(0, countries.Length);
+                answerId = countries[answerIndex].CountryId;
                 unique = !excludeAnswers.Contains(answerId);
+                i++;
             }
-            return answerId;
+            return (unique) ? answerId : -1;
         }
 
         private Country[] GetShuffeledCountries(Random random, Country[] countries)

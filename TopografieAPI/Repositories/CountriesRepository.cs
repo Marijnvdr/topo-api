@@ -136,7 +136,7 @@ namespace TopografieAPI.Repositories
             context.Countries.Add(new CountryEntity { CountryId = 100, Name = "Central African Republic", Name_nl = "Centraal Afrika", Region = "002", SubRegion = "017", Code = "CF", ShowSubRegion = true, DifficultyLevel = 3 });
             context.Countries.Add(new CountryEntity { CountryId = 101, Name = "Ethiopia", Name_nl = "Ethiopië", Region = "002", SubRegion = "014", Code = "ET", ShowSubRegion = true, DifficultyLevel = 2 });
             context.Countries.Add(new CountryEntity { CountryId = 102, Name = "Eritrea", Name_nl = "Eritrea", Region = "002", SubRegion = "014", Code = "ER", ShowSubRegion = true, DifficultyLevel = 3 });
-            context.Countries.Add(new CountryEntity { CountryId = 103, Name = "Djibouti", Name_nl = "Djibouti", Region = "002", SubRegion = "014", Code = "DJ", ShowSubRegion = true, DifficultyLevel = 5 });
+            context.Countries.Add(new CountryEntity { CountryId = 103, Name = "Djibouti", Name_nl = "Djibouti", Region = "002", SubRegion = "014", Code = "DJ", ShowSubRegion = true, DifficultyLevel = 4 });
             context.Countries.Add(new CountryEntity { CountryId = 104, Name = "Somalia", Name_nl = "Somalië", Region = "002", SubRegion = "014", Code = "SO", ShowSubRegion = true, DifficultyLevel = 4 });
             context.Countries.Add(new CountryEntity { CountryId = 105, Name = "Kenya", Name_nl = "Kenya", Region = "002", SubRegion = "014", Code = "KE", ShowSubRegion = true, DifficultyLevel = 2 });
             context.Countries.Add(new CountryEntity { CountryId = 106, Name = "Uganda", Name_nl = "Uganda", Region = "002", SubRegion = "014", Code = "UG", ShowSubRegion = true, DifficultyLevel = 3 });
