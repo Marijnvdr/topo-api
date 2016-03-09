@@ -82,14 +82,14 @@ namespace TopografieAPI.Repositories
             context.Countries.Add(new CountryEntity { CountryId = 46, Name = "Brazil", Name_nl = "Brazilië", Region = "019", SubRegion = "005", Code = "BR", ShowSubRegion = false, DifficultyLevel = 0 });
             context.Countries.Add(new CountryEntity { CountryId = 47, Name = "Bolivia", Name_nl = "Bolivia", Region = "019", SubRegion = "005", Code = "BO", ShowSubRegion = true, DifficultyLevel = 2 });
             context.Countries.Add(new CountryEntity { CountryId = 48, Name = "Chile", Name_nl = "Chili", Region = "019", SubRegion = "005", Code = "CL", ShowSubRegion = true, DifficultyLevel = 1 });
-            context.Countries.Add(new CountryEntity { CountryId = 49, Name = "Argentina", Name_nl = "Argentinië", Region = "019", SubRegion = "005", Code = "AR", ShowSubRegion = false, DifficultyLevel = 0 });
+            context.Countries.Add(new CountryEntity { CountryId = 49, Name = "Argentina", Name_nl = "Argentinië", Region = "019", SubRegion = "005", Code = "AR", ShowSubRegion = true, DifficultyLevel = 0 });
             context.Countries.Add(new CountryEntity { CountryId = 50, Name = "Paraguay", Name_nl = "Paraguay", Region = "019", SubRegion = "005", Code = "PY", ShowSubRegion = true, DifficultyLevel = 2 });
             context.Countries.Add(new CountryEntity { CountryId = 51, Name = "Uruguay", Name_nl = "Uruguay", Region = "019", SubRegion = "005", Code = "UY", ShowSubRegion = true, DifficultyLevel = 2 });
             context.Countries.Add(new CountryEntity { CountryId = 52, Name = "Falkland Islands", Name_nl = "Falkland eilanden", Region = "019", SubRegion = "005", Code = "FK", ShowSubRegion = true, DifficultyLevel = 3 });
             context.Countries.Add(new CountryEntity { CountryId = 53, Name = "Canada", Name_nl = "Canada", Region = "019", SubRegion = "021", Code = "CA", ShowSubRegion = false, DifficultyLevel = 0 });
             context.Countries.Add(new CountryEntity { CountryId = 54, Name = "Greenland", Name_nl = "Groenland", Region = "019", SubRegion = "021", Code = "GL", ShowSubRegion = false, DifficultyLevel = 1 });
             context.Countries.Add(new CountryEntity { CountryId = 55, Name = "United States", Name_nl = "Verenigde Staten", Region = "019", SubRegion = "021", Code = "US", ShowSubRegion = false, DifficultyLevel = 0 });
-            context.Countries.Add(new CountryEntity { CountryId = 56, Name = "Mexico", Name_nl = "Mexico", Region = "019", SubRegion = "013", Code = "MX", ShowSubRegion = false, DifficultyLevel = 0 });
+            context.Countries.Add(new CountryEntity { CountryId = 56, Name = "Mexico", Name_nl = "Mexico", Region = "019", SubRegion = "013", Code = "MX", ShowSubRegion = true, DifficultyLevel = 0 });
             context.Countries.Add(new CountryEntity { CountryId = 57, Name = "Belize", Name_nl = "Belize", Region = "019", SubRegion = "013", Code = "BZ", ShowSubRegion = true, DifficultyLevel = 3 });
             context.Countries.Add(new CountryEntity { CountryId = 58, Name = "Guatemala", Name_nl = "Guatemala", Region = "019", SubRegion = "013", Code = "GT", ShowSubRegion = true, DifficultyLevel = 2 });
             context.Countries.Add(new CountryEntity { CountryId = 59, Name = "El Salvador", Name_nl = "El Salvador", Region = "019", SubRegion = "013", Code = "SV", ShowSubRegion = true, DifficultyLevel = 2 });
@@ -136,7 +136,7 @@ namespace TopografieAPI.Repositories
             context.Countries.Add(new CountryEntity { CountryId = 100, Name = "Central African Republic", Name_nl = "Centraal Afrika", Region = "002", SubRegion = "017", Code = "CF", ShowSubRegion = true, DifficultyLevel = 3 });
             context.Countries.Add(new CountryEntity { CountryId = 101, Name = "Ethiopia", Name_nl = "Ethiopië", Region = "002", SubRegion = "014", Code = "ET", ShowSubRegion = true, DifficultyLevel = 2 });
             context.Countries.Add(new CountryEntity { CountryId = 102, Name = "Eritrea", Name_nl = "Eritrea", Region = "002", SubRegion = "014", Code = "ER", ShowSubRegion = true, DifficultyLevel = 3 });
-            context.Countries.Add(new CountryEntity { CountryId = 103, Name = "Djibouti", Name_nl = "Djibouti", Region = "002", SubRegion = "014", Code = "DJ", ShowSubRegion = true, DifficultyLevel = 5 });
+            context.Countries.Add(new CountryEntity { CountryId = 103, Name = "Djibouti", Name_nl = "Djibouti", Region = "002", SubRegion = "014", Code = "DJ", ShowSubRegion = true, DifficultyLevel = 4 });
             context.Countries.Add(new CountryEntity { CountryId = 104, Name = "Somalia", Name_nl = "Somalië", Region = "002", SubRegion = "014", Code = "SO", ShowSubRegion = true, DifficultyLevel = 4 });
             context.Countries.Add(new CountryEntity { CountryId = 105, Name = "Kenya", Name_nl = "Kenya", Region = "002", SubRegion = "014", Code = "KE", ShowSubRegion = true, DifficultyLevel = 2 });
             context.Countries.Add(new CountryEntity { CountryId = 106, Name = "Uganda", Name_nl = "Uganda", Region = "002", SubRegion = "014", Code = "UG", ShowSubRegion = true, DifficultyLevel = 3 });
@@ -154,7 +154,7 @@ namespace TopografieAPI.Repositories
             context.Countries.Add(new CountryEntity { CountryId = 118, Name = "Zimbabwe", Name_nl = "Zimbabwe", Region = "002", SubRegion = "014", Code = "ZW", ShowSubRegion = true, DifficultyLevel = 4 });
             context.Countries.Add(new CountryEntity { CountryId = 119, Name = "Botswana", Name_nl = "Botswana", Region = "002", SubRegion = "018", Code = "BW", ShowSubRegion = true, DifficultyLevel = 4 });
             context.Countries.Add(new CountryEntity { CountryId = 120, Name = "Namibia", Name_nl = "Namibië", Region = "002", SubRegion = "018", Code = "NA", ShowSubRegion = true, DifficultyLevel = 4 });
-            context.Countries.Add(new CountryEntity { CountryId = 121, Name = "South Africa", Name_nl = "Zuid-Afrika", Region = "002", SubRegion = "018", Code = "ZA", ShowSubRegion = true, DifficultyLevel = 1 });
+            context.Countries.Add(new CountryEntity { CountryId = 121, Name = "South Africa", Name_nl = "Zuid-Afrika", Region = "002", SubRegion = "018", Code = "ZA", ShowSubRegion = false, DifficultyLevel = 1 });
             context.Countries.Add(new CountryEntity { CountryId = 122, Name = "Lesotho", Name_nl = "Lesotho", Region = "002", SubRegion = "018", Code = "LS", ShowSubRegion = true, DifficultyLevel = 3 });
             context.Countries.Add(new CountryEntity { CountryId = 123, Name = "Swaziland", Name_nl = "Swaziland", Region = "002", SubRegion = "018", Code = "SZ", ShowSubRegion = true, DifficultyLevel = 3 });
             context.Countries.Add(new CountryEntity { CountryId = 124, Name = "Madagascar", Name_nl = "Madagascar", Region = "002", SubRegion = "014", Code = "MG", ShowSubRegion = true, DifficultyLevel = 1 });
@@ -164,7 +164,7 @@ namespace TopografieAPI.Repositories
             context.Countries.Add(new CountryEntity { CountryId = 128, Name = "Azerbaijan", Name_nl = "Azerbaidzjan", Region = "142", SubRegion = "145", Code = "AZ", ShowSubRegion = false, DifficultyLevel = 4 });
             context.Countries.Add(new CountryEntity { CountryId = 129, Name = "Armenia", Name_nl = "Armenië", Region = "142", SubRegion = "145", Code = "AM", ShowSubRegion = false, DifficultyLevel = 4 });
             context.Countries.Add(new CountryEntity { CountryId = 130, Name = "Turkey", Name_nl = "Turkije", Region = "142", SubRegion = "145", Code = "TR", ShowSubRegion = false, DifficultyLevel = 0 });
-            context.Countries.Add(new CountryEntity { CountryId = 131, Name = "Cyprus", Name_nl = "Cyprus", Region = "142", SubRegion = "145", Code = "CY", ShowSubRegion = false, DifficultyLevel = 1 });
+            context.Countries.Add(new CountryEntity { CountryId = 131, Name = "Cyprus", Name_nl = "Cyprus", Region = "142", SubRegion = "145", Code = "CY", ShowSubRegion = true, DifficultyLevel = 1 });
             context.Countries.Add(new CountryEntity { CountryId = 132, Name = "Syria", Name_nl = "Syrië", Region = "142", SubRegion = "145", Code = "SY", ShowSubRegion = false, DifficultyLevel = 2 });
             context.Countries.Add(new CountryEntity { CountryId = 133, Name = "Lebanon", Name_nl = "Libanon", Region = "142", SubRegion = "145", Code = "LB", ShowSubRegion = false, DifficultyLevel = 3 });
             context.Countries.Add(new CountryEntity { CountryId = 134, Name = "Israel", Name_nl = "Israël", Region = "142", SubRegion = "145", Code = "IL", ShowSubRegion = false, DifficultyLevel = 3 });
@@ -186,7 +186,7 @@ namespace TopografieAPI.Repositories
             context.Countries.Add(new CountryEntity { CountryId = 150, Name = "Pakistan", Name_nl = "Pakistan", Region = "142", SubRegion = "034", Code = "PK", ShowSubRegion = false, DifficultyLevel = 3 });
             context.Countries.Add(new CountryEntity { CountryId = 151, Name = "India", Name_nl = "India", Region = "142", SubRegion = "034", Code = "IN", ShowSubRegion = false, DifficultyLevel = 0 });
             context.Countries.Add(new CountryEntity { CountryId = 152, Name = "Sri Lanka", Name_nl = "Sri Lanka", Region = "142", SubRegion = "034", Code = "LK", ShowSubRegion = false, DifficultyLevel = 1 });
-            context.Countries.Add(new CountryEntity { CountryId = 153, Name = "Maldives", Name_nl = "Maldiven", Region = "142", SubRegion = "034", Code = "MV", ShowSubRegion = false, DifficultyLevel = 1 });
+            context.Countries.Add(new CountryEntity { CountryId = 153, Name = "Maldives", Name_nl = "Malediven", Region = "142", SubRegion = "034", Code = "MV", ShowSubRegion = true, DifficultyLevel = 3 });
             context.Countries.Add(new CountryEntity { CountryId = 154, Name = "Bangladesh", Name_nl = "Bangladesh", Region = "142", SubRegion = "034", Code = "BD", ShowSubRegion = false, DifficultyLevel = 4 });
             context.Countries.Add(new CountryEntity { CountryId = 155, Name = "Nepal", Name_nl = "Nepal", Region = "142", SubRegion = "034", Code = "NP", ShowSubRegion = false, DifficultyLevel = 3 });
             context.Countries.Add(new CountryEntity { CountryId = 156, Name = "Bhutan", Name_nl = "Bhutan", Region = "142", SubRegion = "034", Code = "BT", ShowSubRegion = false, DifficultyLevel = 4 });

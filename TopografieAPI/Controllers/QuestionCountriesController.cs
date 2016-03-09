@@ -9,6 +9,7 @@ using System.Web.Http.Cors;
 using System.Xml.Linq;
 using TopografieAPI.Models;
 using TopografieAPI.Repositories;
+using TopografieAPI.Entities;
 
 namespace TopografieAPI.Controllers
 {
@@ -18,31 +19,73 @@ namespace TopografieAPI.Controllers
         private const int MaxCountryId = 173;
         private const int NumberOfChoices = 8;
 
-        public QuestionCountryViewModel Get(int difficultyLevel /*, string excludeList*/)
+        public QuestionCountryViewModel Get(int difficultyLevel, string excludeList)
         {
-            // string[] excludeCountries = excludeList.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+            string[] ar = excludeList.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+            var excludeCountries = new List<int>();
+            foreach (var item in ar)
+            {
+                excludeCountries.Add(int.Parse(item));
+            }
 
-            // ToDo: Take difficultyLevel and excludeList into account.
+            // ToDo: Take excludeList into account.
+
+            var db = new CountriesRepository();
+
+            var countries = db.Countries.Where(x => x.DifficultyLevel == difficultyLevel).ToArray();
 
             Random random = new Random();
 
             List<int> answers = new List<int>();
 
             // Get answer to question
-            var answerId = random.Next(1, MaxCountryId + 1);
+            var cntry = GetRandomUniqueCountry(random, countries, excludeCountries, true);
+            var answerId = cntry.CountryId;
             answers.Add(answerId);
+            var region = cntry.Region;
+            var subRegion = cntry.SubRegion;
 
-            // Get multiple choice answers
-            for (int i = 0; i < NumberOfChoices - 1; i++)
+            // Try to get 4 answers from the same region
+            var countriesSameSubRegion = db.Countries.Where(x => x.Region == region &&
+                                                                 x.SubRegion == subRegion).ToArray();
+            if (countriesSameSubRegion.Length <= 4)
             {
-                var id = GetRandomUniqueId(random, answers);
-                answers.Add(id);
+                foreach (var c in countriesSameSubRegion)
+                {
+                    if (c.CountryId != answerId)
+                    answers.Add(c.CountryId);
+                }
             }
-            var countries = GetCountries(answers);
+            else
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    var country = GetRandomUniqueCountry(random, countriesSameSubRegion, answers);
+                    if (country != null)
+                    {
+                        answers.Add(country.CountryId);
+                    }                    
+                }
+            }
+            // Get other multiple choice answers
+            var allCountries = db.Countries.ToArray();
+            var answerCount = NumberOfChoices - answers.Count;
+            int y= 0;
+            while (y < answerCount)
+            {
+                var country = GetRandomUniqueCountry(random, allCountries, answers);
+                if (country != null)
+                {
+                    answers.Add(country.CountryId);
+                    y++;
+                }                
+            }
 
-            var shuffeledCountries = GetShuffeledCountries(random, countries);
+            var questionCountries = GetCountries(answers);
 
-            return new QuestionCountryViewModel() { Answer = countries[0], Choices = shuffeledCountries };
+            var shuffeledCountries = GetShuffeledCountries(random, questionCountries);
+
+            return new QuestionCountryViewModel() { Answer = questionCountries[0], Choices = shuffeledCountries };
         }
 
         /// <summary>
@@ -84,17 +127,29 @@ namespace TopografieAPI.Controllers
             };
         }
 
-        private int GetRandomUniqueId(Random random, List<int> excludeAnswers)
+        private CountryEntity GetRandomUniqueCountry(Random random, CountryEntity[] countries, List<int> excludeAnswers, bool forceAnswer = false)
         {
             bool unique = false;
-            int answerId = 0;
+            int answerId = -1;
+            int tryMax = 100;
+            int i = 1;
+            CountryEntity country = null; 
 
-            while (!unique)
+            while (!unique && i < tryMax)
             {
-                answerId = random.Next(1, MaxCountryId + 1);
+                var answerIndex = random.Next(0, countries.Length);
+                country = countries[answerIndex];
+                answerId = countries[answerIndex].CountryId;
                 unique = !excludeAnswers.Contains(answerId);
+                i++;
             }
-            return answerId;
+
+            if (!unique && !forceAnswer)
+            {
+                answerId = -1;
+                country = null;
+            }
+            return country;
         }
 
         private Country[] GetShuffeledCountries(Random random, Country[] countries)
