@@ -9,6 +9,7 @@ using System.Web.Http.Cors;
 using System.Xml.Linq;
 using TopografieAPI.Models;
 using TopografieAPI.Repositories;
+using TopografieAPI.Entities;
 
 namespace TopografieAPI.Controllers
 {
@@ -18,9 +19,14 @@ namespace TopografieAPI.Controllers
         private const int MaxCountryId = 173;
         private const int NumberOfChoices = 8;
 
-        public QuestionCountryViewModel Get(int difficultyLevel /*, string excludeList*/)
+        public QuestionCountryViewModel Get(int difficultyLevel, string excludeList)
         {
-            // string[] excludeCountries = excludeList.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+            string[] ar = excludeList.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+            var excludeCountries = new List<int>();
+            foreach (var item in ar)
+            {
+                excludeCountries.Add(int.Parse(item));
+            }
 
             // ToDo: Take excludeList into account.
 
@@ -33,12 +39,11 @@ namespace TopografieAPI.Controllers
             List<int> answers = new List<int>();
 
             // Get answer to question
-            var randomIndex = random.Next(0, countries.Length);
-            var answerId = countries[randomIndex].CountryId;
+            var cntry = GetRandomUniqueCountry(random, countries, excludeCountries, true);
+            var answerId = cntry.CountryId;
             answers.Add(answerId);
-
-            var region = countries[randomIndex].Region;
-            var subRegion = countries[randomIndex].SubRegion;
+            var region = cntry.Region;
+            var subRegion = cntry.SubRegion;
 
             // Try to get 4 answers from the same region
             var countriesSameSubRegion = db.Countries.Where(x => x.Region == region &&
@@ -55,10 +60,10 @@ namespace TopografieAPI.Controllers
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    var id = GetRandomUniqueId(random, countriesSameSubRegion, answers);
-                    if (id > -1)
+                    var country = GetRandomUniqueCountry(random, countriesSameSubRegion, answers);
+                    if (country != null)
                     {
-                        answers.Add(id);
+                        answers.Add(country.CountryId);
                     }                    
                 }
             }
@@ -68,10 +73,10 @@ namespace TopografieAPI.Controllers
             int y= 0;
             while (y < answerCount)
             {
-                var id = GetRandomUniqueId(random, allCountries, answers);
-                if (id > -1)
+                var country = GetRandomUniqueCountry(random, allCountries, answers);
+                if (country != null)
                 {
-                    answers.Add(id);
+                    answers.Add(country.CountryId);
                     y++;
                 }                
             }
@@ -122,20 +127,29 @@ namespace TopografieAPI.Controllers
             };
         }
 
-        private int GetRandomUniqueId(Random random, Entities.CountryEntity[] countries, List<int> excludeAnswers)
+        private CountryEntity GetRandomUniqueCountry(Random random, CountryEntity[] countries, List<int> excludeAnswers, bool forceAnswer = false)
         {
             bool unique = false;
             int answerId = -1;
             int tryMax = 100;
             int i = 1;
+            CountryEntity country = null; 
+
             while (!unique && i < tryMax)
             {
                 var answerIndex = random.Next(0, countries.Length);
+                country = countries[answerIndex];
                 answerId = countries[answerIndex].CountryId;
                 unique = !excludeAnswers.Contains(answerId);
                 i++;
             }
-            return (unique) ? answerId : -1;
+
+            if (!unique && !forceAnswer)
+            {
+                answerId = -1;
+                country = null;
+            }
+            return country;
         }
 
         private Country[] GetShuffeledCountries(Random random, Country[] countries)
