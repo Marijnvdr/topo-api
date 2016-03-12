@@ -31,8 +31,6 @@ namespace TopografieAPI.Controllers
                 }
             }
 
-            // ToDo: Take excludeList into account.
-
             var db = new CountriesRepository();
 
             var countries = db.Countries.Where(x => x.DifficultyLevel == difficultyLevel).ToArray();
