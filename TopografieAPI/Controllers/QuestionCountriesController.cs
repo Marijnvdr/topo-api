@@ -21,11 +21,14 @@ namespace TopografieAPI.Controllers
 
         public QuestionCountryViewModel Get(int difficultyLevel, string excludeList)
         {
-            string[] ar = excludeList.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
             var excludeCountries = new List<int>();
-            foreach (var item in ar)
+            if (excludeList != null)
             {
-                excludeCountries.Add(int.Parse(item));
+                string[] ar = excludeList.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (var item in ar)
+                {
+                    excludeCountries.Add(int.Parse(item));
+                }
             }
 
             // ToDo: Take excludeList into account.
